@@ -1,0 +1,20 @@
+JAVA AND JENKINS
+sudo apt update -y
+sudo apt install fontconfig openjdk-`1
+
+
+sudo service jenkins restart
+sudo service jenkins status
+
+sudo cat//var/lib/jenkins/secrets/initialAdminPassword
+(run localhost:8080)
+
+DOCKER:
+sudo apt install docker.io -y
+sudo service docker restart
+sudo service docker status
+
+sudo usermod =aG docker $USER //PERMISSION
+docker images
+docker ps
+sudo chmod 666 /var/run/docker.sock
