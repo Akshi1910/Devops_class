@@ -1,0 +1,61 @@
+KUBERNETES(K8s)
+
+Kubernetes is an open souce container orchestration engine for automating deployment,scaling,amd managemen of containerized application.
+The open source project is hosted by the Cloud Native Computing Foundation(CNCF).
+It provides a scalable and resilieent framework for automating the deployment,scaling.
+
+HISTORY
+
+2000s Google started developing a system called Borg.
+In 2014 google -open source
+
+ARCHITECTURE
+
+pod - group of running containers
+
+
+
+ControlPlane/Master Node - the contol plame components mkes global decision about the cluster
+
+API server -central control point for all interaction with the cluster,it exposes the kubernetes apind handles req from user and other components
+Scheduler - responsible for assigning workloads to induvidualwork nodes
+controller manager- runs various controllers that monitors the cluster state and drive it to the desired state
+etcd - distributed key-value store used bykubernetes to store cluster state and configuration data
+
+
+Worker nodes
+kubelet - primary agen
+
+pod - is the basic unit of deployment in kubernetes.they encapuste one or more containers that share same resources and storage resources
+repliaset - it ensures a specified no of pod replicas count of replicas are running at all times.it is responsible for maintaining the desire replica count of a pod template in the cluster.
+If the actual no of replicas falls below the desired count,Replicaset creates additional pods tomatch the desired count.
+
+deployment - highlevel of abstraction that mnages and updates replica
+service- provides stablenetwork endpoint for accessing a group of pods
+
+1. Create a pod using run command
+$ kubectl run <pod-name> --image=<image-name> --port=<container-port>
+$ kubectl run my-pod --image=nginx --port=80
+
+2. View all the pods 
+(In default namespace)
+$ kubectl get pods 
+(In All namespace)
+
+$ kubectl get pods -A
+# For a specific namespace
+$ kubectl get pods -n kube-system
+
+# For a specific type
+$ kubectl get pods <pod-name> 
+$ kubectl get pods <pod-name> -o wide
+$ kubectl get pods <pod-name> -o yaml
+$ kubectl get pods <pod-name> -o json
+
+3. Describe a pod (View Pod details)
+$ kubectl describe pod <pod-name>
+$ kubectl describe pod my-pod
+4. View Logs of a pod
+$ kubectl logs <pod-name>
+$ kubectl logs my-pod
+$ kubectl exec <pod-name> -- <command>
